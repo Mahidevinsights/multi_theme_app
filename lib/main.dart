@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
               primaryColor: AppColors.primary,
               scaffoldBackgroundColor: AppColors.background,
               textTheme: TextTheme(
-                bodyMedium: TextStyle(color: AppColors.textColor),
+                bodyMedium: TextStyle(color: AppColors.primary),
               ),
             ),
             initialRoute: '/',

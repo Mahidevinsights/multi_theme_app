@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../styles/app_colors.dart';
 
 class Screen1 extends StatelessWidget {
@@ -11,16 +10,19 @@ class Screen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme =
+        AppColors.themeMap[AppColors.currentTheme]!; // Access current theme
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Stock List",
-          style: TextStyle(color: AppColors.textColor),
+          style: TextStyle(color: theme['text']),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: theme['primary'],
         actions: [
           IconButton(
-            icon: Icon(Icons.color_lens, color: AppColors.textColor),
+            icon: Icon(Icons.color_lens, color: theme['text']),
             onPressed: () {
               Navigator.pushNamed(context, '/theme_selector');
             },
@@ -34,7 +36,7 @@ class Screen1 extends StatelessWidget {
           return Container(
             margin: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              color: AppColors.background,
+              color: theme['background'],
               border: Border.all(
                 color: stock["change"]!.startsWith('-')
                     ? Colors.red
@@ -47,13 +49,13 @@ class Screen1 extends StatelessWidget {
               title: Text(
                 stock["name"]!,
                 style: TextStyle(
-                  color: AppColors.headingText,
+                  color: theme['headingText'],
                   fontWeight: FontWeight.bold,
                 ),
               ),
               subtitle: Text(
                 "Price: ${stock["price"]}",
-                style: TextStyle(color: AppColors.subheadingText),
+                style: TextStyle(color: theme['subheadingText']),
               ),
               trailing: Text(
                 stock["change"]!,
@@ -68,11 +70,11 @@ class Screen1 extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.primary,
+        backgroundColor: theme['primary'],
         onPressed: () {
           Navigator.pushNamed(context, '/screen2');
         },
-        child: Icon(Icons.arrow_forward, color: AppColors.textColor),
+        child: Icon(Icons.arrow_forward, color: theme['text']),
       ),
     );
   }

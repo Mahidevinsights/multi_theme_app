@@ -10,13 +10,16 @@ class Screen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme =
+        AppColors.themeMap[AppColors.currentTheme]!; // Access current theme
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Mutual Funds",
-          style: TextStyle(color: AppColors.textColor),
+          style: TextStyle(color: theme['text']),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: theme['primary'],
       ),
       body: ListView.builder(
         itemCount: mutualFunds.length,
@@ -25,7 +28,7 @@ class Screen2 extends StatelessWidget {
           return Container(
             margin: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              color: AppColors.background,
+              color: theme['background'],
               border: Border.all(
                 color: fund["returns"]!.startsWith('-')
                     ? Colors.red
@@ -38,13 +41,13 @@ class Screen2 extends StatelessWidget {
               title: Text(
                 fund["name"]!,
                 style: TextStyle(
-                  color: AppColors.headingText,
+                  color: theme['headingText'],
                   fontWeight: FontWeight.bold,
                 ),
               ),
               subtitle: Text(
                 "NAV: ${fund["nav"]}",
-                style: TextStyle(color: AppColors.subheadingText),
+                style: TextStyle(color: theme['subheadingText']),
               ),
               trailing: Text(
                 fund["returns"]!,
@@ -59,11 +62,11 @@ class Screen2 extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.primary,
+        backgroundColor: theme['primary'],
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.pop(context); // Go back to the previous screen
         },
-        child: Icon(Icons.arrow_back, color: AppColors.textColor),
+        child: Icon(Icons.arrow_back, color: theme['text']),
       ),
     );
   }

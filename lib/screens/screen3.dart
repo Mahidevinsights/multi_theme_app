@@ -7,29 +7,32 @@ import '../styles/app_colors.dart';
 class ThemeSelectorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme =
+        AppColors.themeMap[AppColors.currentTheme]!; // Access current theme
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Theme Selector",
-          style: TextStyle(color: AppColors.textColor),
+          style: TextStyle(color: theme['text']),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: theme['primary'],
       ),
       body: Center(
         child: DropdownButton<AppThemes>(
           value: AppColors.currentTheme,
-          items: AppThemes.values.map((theme) {
+          items: AppThemes.values.map((themeOption) {
             return DropdownMenuItem(
-              value: theme,
+              value: themeOption,
               child: Text(
-                theme.name.toUpperCase(),
-                style: TextStyle(color: AppColors.textColor),
+                themeOption.name.toUpperCase(),
+                style: TextStyle(color: theme['text']),
               ),
             );
           }).toList(),
-          onChanged: (theme) {
-            if (theme != null) {
-              context.read<ThemeCubit>().setTheme(theme); // Change theme
+          onChanged: (themeOption) {
+            if (themeOption != null) {
+              context.read<ThemeCubit>().setTheme(themeOption); // Change theme
             }
           },
         ),
