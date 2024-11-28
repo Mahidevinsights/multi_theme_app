@@ -9,6 +9,14 @@ class ThemeSelectorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/riceScreen');
+            },
+            icon: Icon(Icons.toggle_on),
+          )
+        ],
         title: Text(
           "Theme Selector",
           style: TextStyle(color: AppColors.textColor),

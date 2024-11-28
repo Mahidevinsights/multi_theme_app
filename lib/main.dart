@@ -42,6 +42,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multi_theme_app/screens/rise_screen.dart';
 import 'package:multi_theme_app/screens/screen3.dart';
 import 'package:multi_theme_app/utils/enums.dart';
 import 'cubit/theme_cubit.dart';
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
               '/': (context) => Screen1(),
               '/screen2': (context) => Screen2(),
               '/screen3': (context) => ThemeSelectorScreen(),
+              '/riceScreen': (context) => RiseScreen(),
             },
           );
         },
