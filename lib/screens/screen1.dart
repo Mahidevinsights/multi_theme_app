@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multi_theme_app/utils/enums.dart';
 import '../styles/app_colors.dart';
+import '../cubit/theme_cubit.dart';
 
 class Screen1 extends StatelessWidget {
   final List<Map<String, String>> stocks = [
@@ -10,71 +13,90 @@ class Screen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme =
-        AppColors.themeMap[AppColors.currentTheme]!; // Access current theme
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Stock List",
-          style: TextStyle(color: theme['text']),
+          "Stocks",
+          style: TextStyle(color: AppColors.textColor),
         ),
-        backgroundColor: theme['primary'],
+        backgroundColor: AppColors.primary,
         actions: [
           IconButton(
-            icon: Icon(Icons.color_lens, color: theme['text']),
+            icon: Icon(Icons.arrow_forward, color: AppColors.textColor),
             onPressed: () {
-              Navigator.pushNamed(context, '/theme_selector');
+              Navigator.pushNamed(context, '/screen2');
             },
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: stocks.length,
-        itemBuilder: (context, index) {
-          final stock = stocks[index];
-          return Container(
-            margin: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              color: theme['background'],
-              border: Border.all(
-                color: stock["change"]!.startsWith('-')
-                    ? Colors.red
-                    : Colors.green,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.circular(8.0),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: stocks.length,
+              itemBuilder: (context, index) {
+                final stock = stocks[index];
+                return Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.background,
+                    border: Border.all(
+                      color: stock["change"]!.startsWith('-')
+                          ? Colors.red.withOpacity(0.5)
+                          : Colors.green.withOpacity(0.5),
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  margin: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 4.0),
+                  child: ListTile(
+                    title: Text(
+                      stock["name"]!,
+                      style: TextStyle(
+                        color: AppColors.headingText,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      "Price: ${stock["price"]}",
+                      style: TextStyle(color: AppColors.subheadingText),
+                    ),
+                    trailing: Text(
+                      stock["change"]!,
+                      style: TextStyle(
+                        color: stock["change"]!.startsWith('-')
+                            ? Colors.red
+                            : Colors.green,
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
-            child: ListTile(
-              title: Text(
-                stock["name"]!,
-                style: TextStyle(
-                  color: theme['headingText'],
-                  fontWeight: FontWeight.bold,
-                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primary,
               ),
-              subtitle: Text(
-                "Price: ${stock["price"]}",
-                style: TextStyle(color: theme['subheadingText']),
-              ),
-              trailing: Text(
-                stock["change"]!,
-                style: TextStyle(
-                  color: stock["change"]!.startsWith('-')
-                      ? Colors.red
-                      : Colors.green,
-                ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/screen2');
+              },
+              child: Text(
+                "Go to Screen 2",
+                style: TextStyle(color: AppColors.buttonText),
               ),
             ),
-          );
-        },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: theme['primary'],
+        backgroundColor: AppColors.primary,
         onPressed: () {
           Navigator.pushNamed(context, '/screen2');
         },
-        child: Icon(Icons.arrow_forward, color: theme['text']),
+        child: Icon(Icons.arrow_forward, color: AppColors.textColor),
       ),
     );
   }

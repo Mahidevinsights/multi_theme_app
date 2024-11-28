@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../styles/app_colors.dart';
+import 'package:multi_theme_app/styles/app_colors.dart';
 
 class Screen2 extends StatelessWidget {
   final List<Map<String, String>> mutualFunds = [
@@ -10,63 +10,72 @@ class Screen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme =
-        AppColors.themeMap[AppColors.currentTheme]!; // Access current theme
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Mutual Funds",
-          style: TextStyle(color: theme['text']),
+          style: TextStyle(color: AppColors.textColor),
         ),
-        backgroundColor: theme['primary'],
+        backgroundColor: AppColors.primary,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.arrow_forward, color: AppColors.textColor),
+            onPressed: () {
+              Navigator.pushNamed(context, '/screen3');
+            },
+          ),
+        ],
       ),
-      body: ListView.builder(
-        itemCount: mutualFunds.length,
-        itemBuilder: (context, index) {
-          final fund = mutualFunds[index];
-          return Container(
-            margin: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              color: theme['background'],
-              border: Border.all(
-                color: fund["returns"]!.startsWith('-')
-                    ? Colors.red
-                    : Colors.green,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.circular(8.0),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: mutualFunds.length,
+              itemBuilder: (context, index) {
+                final fund = mutualFunds[index];
+                return Card(
+                  color: AppColors.background,
+                  child: ListTile(
+                    title: Text(
+                      fund["name"]!,
+                      style: TextStyle(
+                        color: AppColors.headingText,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      "NAV: ${fund["nav"]}",
+                      style: TextStyle(color: AppColors.subheadingText),
+                    ),
+                    trailing: Text(
+                      fund["returns"]!,
+                      style: TextStyle(
+                        color: fund["returns"]!.startsWith('-')
+                            ? Colors.red
+                            : Colors.green,
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
-            child: ListTile(
-              title: Text(
-                fund["name"]!,
-                style: TextStyle(
-                  color: theme['headingText'],
-                  fontWeight: FontWeight.bold,
-                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primary,
               ),
-              subtitle: Text(
-                "NAV: ${fund["nav"]}",
-                style: TextStyle(color: theme['subheadingText']),
-              ),
-              trailing: Text(
-                fund["returns"]!,
-                style: TextStyle(
-                  color: fund["returns"]!.startsWith('-')
-                      ? Colors.red
-                      : Colors.green,
-                ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/screen3');
+              },
+              child: Text(
+                "Go to Screen 3",
+                style: TextStyle(color: AppColors.buttonText),
               ),
             ),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: theme['primary'],
-        onPressed: () {
-          Navigator.pop(context); // Go back to the previous screen
-        },
-        child: Icon(Icons.arrow_back, color: theme['text']),
+          ),
+        ],
       ),
     );
   }
