@@ -34,18 +34,18 @@ class Screen2 extends StatelessWidget {
               itemBuilder: (context, index) {
                 final fund = mutualFunds[index];
                 return Card(
-                  color: AppColors.background,
+                  color: AppColors.foreGround,
                   child: ListTile(
                     title: Text(
                       fund["name"]!,
                       style: TextStyle(
-                        color: AppColors.headingText,
+                        color: AppColors.primaryText,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     subtitle: Text(
                       "NAV: ${fund["nav"]}",
-                      style: TextStyle(color: AppColors.subheadingText),
+                      style: TextStyle(color: AppColors.secondaryText),
                     ),
                     trailing: Text(
                       fund["returns"]!,
@@ -71,7 +71,7 @@ class Screen2 extends StatelessWidget {
               },
               child: Text(
                 "Go to Screen 3",
-                style: TextStyle(color: AppColors.buttonText),
+                style: TextStyle(color: AppColors.primaryText),
               ),
             ),
           ),

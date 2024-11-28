@@ -38,7 +38,7 @@ class Screen1 extends StatelessWidget {
                 final stock = stocks[index];
                 return Container(
                   decoration: BoxDecoration(
-                    color: AppColors.background,
+                    color: AppColors.foreGround,
                     border: Border.all(
                       color: stock["change"]!.startsWith('-')
                           ? Colors.red.withOpacity(0.5)
@@ -53,13 +53,13 @@ class Screen1 extends StatelessWidget {
                     title: Text(
                       stock["name"]!,
                       style: TextStyle(
-                        color: AppColors.headingText,
+                        color: AppColors.primaryText,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     subtitle: Text(
                       "Price: ${stock["price"]}",
-                      style: TextStyle(color: AppColors.subheadingText),
+                      style: TextStyle(color: AppColors.secondaryText),
                     ),
                     trailing: Text(
                       stock["change"]!,
@@ -85,7 +85,7 @@ class Screen1 extends StatelessWidget {
               },
               child: Text(
                 "Go to Screen 2",
-                style: TextStyle(color: AppColors.buttonText),
+                style: TextStyle(color: AppColors.primaryText),
               ),
             ),
           ),

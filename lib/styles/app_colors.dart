@@ -22,8 +22,13 @@ class AppColors {
 
   static Color get primary => colors['primary']!;
   static Color get background => colors['background']!;
+  static Color get foreGround => colors['foreGround']!;
+  static Color get cardBorder => colors['cardBorder']!;
+  static Color get depth => colors['depth']!;
+  static Color get secondary => colors['secondary']!;
+  static Color get primaryText => colors['primaryText']!;
+  static Color get secondaryText => colors['secondaryText']!;
+  static Color get positiveIndicator => colors['positiveIndicator']!;
+  static Color get negativeIndicator => colors['negativeIndicator']!;
   static Color get textColor => colors['textColor']!;
-  static Color get headingText => colors['headingText']!;
-  static Color get subheadingText => colors['subheadingText']!;
-  static Color get buttonText => colors['buttonText']!;
 }
