@@ -15,10 +15,17 @@ class AppImages {
     AppThemes.green: GreenTheme.images,
   };
 
-  // Centralized image Access
-  static Map<String, String> get imagePath => _themeMap[currentTheme]!;
+  // Centralized Image Access with Fallback
+  static Map<String, String> get imagePath {
+    return _themeMap[currentTheme] ?? LightTheme.images; // Default fallback
+  }
 
-  static String get mic => imagePath['mic']!;
-  static String get search => imagePath['search']!;
-  static String get statePic => imagePath['ap_state']!;
+  static String _getImage(String key) {
+    // Check if the key exists in the current theme; otherwise, fallback to LightTheme
+    return imagePath[key] ?? LightTheme.images[key] ?? '';
+  }
+
+  static String get mic => _getImage('mic');
+  static String get search => _getImage('search');
+  static String get statePic => _getImage('ap_state');
 }
