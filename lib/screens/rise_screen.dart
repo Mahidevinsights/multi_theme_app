@@ -8,8 +8,7 @@ class RiseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.depth,
+        backgroundColor: AppColors.primary,
         elevation: 0,
         title: Text(
           'Portfolio',
@@ -18,17 +17,21 @@ class RiseScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.search, color: AppColors.textColor),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/screen1');
+            },
           ),
           IconButton(
             icon: Icon(Icons.account_circle, color: AppColors.primaryText),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/screen4');
+            },
           ),
         ],
       ),
       backgroundColor: AppColors.background,
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
           // Indices Row (Sensex and Nifty)
           Row(
@@ -46,14 +49,14 @@ class RiseScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           // Portfolio Summary
           Container(
             decoration: BoxDecoration(
               color: AppColors.foreGround,
               borderRadius: BorderRadius.circular(8),
             ),
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -61,7 +64,7 @@ class RiseScreen extends StatelessWidget {
                   'View Analysis',
                   style: TextStyle(color: AppColors.primary, fontSize: 16),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   'Current Value of Stocks',
                   style: TextStyle(color: AppColors.secondaryText),
@@ -74,7 +77,7 @@ class RiseScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   'Invested Value',
                   style: TextStyle(color: AppColors.secondaryText),
@@ -86,7 +89,7 @@ class RiseScreen extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   'Day P&L',
                   style: TextStyle(color: AppColors.primaryText),
@@ -98,12 +101,12 @@ class RiseScreen extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   'Overall P&L',
                   style: TextStyle(color: AppColors.secondaryText),
                 ),
-                Text(
+                const Text(
                   '+₹10,32,127.65 (+100.59%)',
                   style: TextStyle(
                     color: Colors.green,
@@ -113,15 +116,15 @@ class RiseScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           // Stock List Header
           Text(
             'All (20)',
             style: TextStyle(color: AppColors.primaryText, fontSize: 16),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           // Stock Cards
-          StockCard(
+          const StockCard(
             stockName: 'HDFCLIFE',
             avgPrice: '₹1,500.85',
             ltp: '₹1,500.85',
@@ -131,7 +134,7 @@ class RiseScreen extends StatelessWidget {
             current: '₹1,85,000.85',
             pnlColor: Colors.green,
           ),
-          StockCard(
+          const StockCard(
             stockName: 'ICICIBANK',
             avgPrice: '₹1,500.85',
             ltp: '₹1,500.85',
@@ -147,7 +150,7 @@ class RiseScreen extends StatelessWidget {
         backgroundColor: AppColors.depth,
         unselectedItemColor: AppColors.secondaryText,
         selectedItemColor: AppColors.primary,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),
             label: 'Explore',
@@ -184,8 +187,8 @@ class StockCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.foreGround,
         borderRadius: BorderRadius.circular(8),
@@ -197,7 +200,7 @@ class StockCard extends StatelessWidget {
             stockName,
             style: TextStyle(color: AppColors.primaryText, fontSize: 18),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -206,11 +209,11 @@ class StockCard extends StatelessWidget {
               Text('LTP: $ltp', style: TextStyle(color: AppColors.primaryText)),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text('Qty: $qty', style: TextStyle(color: AppColors.secondaryText)),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text('Day P&L: $dayPnl', style: TextStyle(color: pnlColor)),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text('Invested: $invested',
               style: TextStyle(color: AppColors.secondaryText)),
           Text('Current: $current',

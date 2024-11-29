@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multi_theme_app/cubit/theme_cubit.dart';
 import 'package:multi_theme_app/utils/enums.dart';
 import '../styles/app_colors.dart';
-import '../cubit/theme_cubit.dart';
 
 class Screen1 extends StatelessWidget {
   final List<Map<String, String>> stocks = [
@@ -94,9 +94,12 @@ class Screen1 extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primary,
         onPressed: () {
-          Navigator.pushNamed(context, '/screen2');
+          final theme = AppColors.currentTheme == AppThemes.dark
+              ? AppThemes.light
+              : AppThemes.dark;
+          context.read<ThemeCubit>().setTheme(theme);
         },
-        child: Icon(Icons.arrow_forward, color: AppColors.textColor),
+        child: Icon(Icons.brightness_6, color: AppColors.textColor),
       ),
     );
   }

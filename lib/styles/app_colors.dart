@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:multi_theme_app/styles/multi_theme_colors/blue_theme_colors.dart';
-import 'package:multi_theme_app/styles/multi_theme_colors/dark_theme_colors.dart';
-import 'package:multi_theme_app/styles/multi_theme_colors/ligth_theme_colors.dart';
+import 'package:multi_theme_app/styles/multi_themes/blue_theme.dart';
+import 'package:multi_theme_app/styles/multi_themes/dark_theme.dart';
+import 'package:multi_theme_app/styles/multi_themes/light_theme.dart';
 import 'package:multi_theme_app/utils/enums.dart';
-
-import 'multi_theme_colors/green_theme_colors.dart';
+import 'multi_themes/green_theme.dart';
 
 class AppColors {
   static AppThemes currentTheme = AppThemes.light;
 
   // Theme Map
   static final _themeMap = {
-    AppThemes.light: LightThemeColors.colors,
-    AppThemes.dark: DarkThemeColors.colors,
-    AppThemes.blue: BlueThemeColors.colors,
-    AppThemes.green: GreenThemeColors.colors,
+    AppThemes.light: LightTheme.colors,
+    AppThemes.dark: DarkTheme.colors,
+    AppThemes.blue: BlueTheme.colors,
+    AppThemes.green: GreenTheme.colors,
   };
 
   // Centralized Color Access

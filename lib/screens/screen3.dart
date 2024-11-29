@@ -14,7 +14,7 @@ class ThemeSelectorScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/riceScreen');
             },
-            icon: Icon(Icons.toggle_on),
+            icon: Icon(Icons.apartment_rounded),
           )
         ],
         title: Text(
@@ -24,22 +24,34 @@ class ThemeSelectorScreen extends StatelessWidget {
         backgroundColor: AppColors.primary,
       ),
       body: Center(
-        child: DropdownButton<AppThemes>(
-          value: AppColors.currentTheme,
-          items: AppThemes.values.map((themeOption) {
-            return DropdownMenuItem(
-              value: themeOption,
-              child: Text(
-                themeOption.name.toUpperCase(),
-                style: TextStyle(color: AppColors.primary),
-              ),
-            );
-          }).toList(),
-          onChanged: (themeOption) {
-            if (themeOption != null) {
-              context.read<ThemeCubit>().setTheme(themeOption); // Change theme
-            }
-          },
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: AppColors.primary, // Border color
+              width: 2.0, // Border width
+            ),
+            borderRadius: BorderRadius.circular(8.0), // Rounded corners
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: DropdownButton<AppThemes>(
+            value: AppColors.currentTheme,
+            items: AppThemes.values.map((themeOption) {
+              return DropdownMenuItem(
+                value: themeOption,
+                child: Text(
+                  themeOption.name.toUpperCase(),
+                  style: TextStyle(color: AppColors.primary),
+                ),
+              );
+            }).toList(),
+            onChanged: (themeOption) {
+              if (themeOption != null) {
+                context
+                    .read<ThemeCubit>()
+                    .setTheme(themeOption); // Change theme
+              }
+            },
+          ),
         ),
       ),
     );
