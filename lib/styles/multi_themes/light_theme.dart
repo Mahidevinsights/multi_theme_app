@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../app_constants.dart/light_theme_const_keys.dart';
+import '../app_constants.dart/theme_const_keys.dart';
 
 class LightTheme {
   //const colors - can add new colors here
