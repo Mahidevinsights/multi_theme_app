@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multi_theme_app/styles/multi_themes/blue_theme.dart';
 import 'package:multi_theme_app/styles/multi_themes/dark_theme.dart';
 import 'package:multi_theme_app/styles/multi_themes/light_theme.dart';
+import 'app_constants.dart/light_theme_const_keys.dart';
 import 'multi_themes/green_theme.dart';
 import 'package:multi_theme_app/utils/enums.dart';
 
@@ -25,8 +26,8 @@ class AppColors {
     return colors[key] ?? LightTheme.colors[key] ?? Colors.transparent;
   }
 
-  static Color get primary => _getColor('primary');
-  static Color get background => _getColor('background');
+  static Color get primary => _getColor(ThemeColorKeys.primary);
+  static Color get background => _getColor(ThemeColorKeys.background);
   static Color get foreGround => _getColor('foreGround');
   static Color get cardBorder => _getColor('cardBorder');
   static Color get depth => _getColor('depth');
