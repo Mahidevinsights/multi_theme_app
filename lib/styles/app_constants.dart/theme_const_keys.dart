@@ -10,4 +10,12 @@ class ThemeColorKeys {
   static const String positiveIndicator = 'positiveIndicator';
   static const String negativeIndicator = 'negativeIndicator';
   static const String textColor = 'textColor';
+  static const String tabActiveText = 'tabActiveText';
+  static const String tabInActiveText = 'tabInActiveText';
+  static const String headingTextColor = 'headingTextColor';
+  static const String subHeadingTextColor = 'subHeadingTextColor';
+  static const String bottomAppBarColor = 'bottomAppBarColor';
+  static const String investorProfileBg = 'investorProfileBg';
+  static const String investorProfileBorder = 'investorProfileBorder';
+  
 }
